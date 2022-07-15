@@ -1,0 +1,68 @@
+<div class="card-header">
+  <h1 class="px-3">
+    <%= title %>
+  </h1>
+</div>
+<div class="card-body">
+  <form method="post">
+    <div class="row mb-3">
+      <div class="col-sm-6">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" placeholder="Name" class="form-control mt-1">
+      </div>
+      <div class="col-sm-6">
+        <label for="rating">Rating</label>
+        <input type="number" min="0" name="rating" id="rating" placeholder="Rating" class="form-control mt-1">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-sm-6">
+        <label for="genere">Genere</label>
+        <input type="text" name="genere" id="genere" placeholder="Genere" class="form-control mt-1">
+      </div>
+      <div class="col-sm-6">
+        <label for="releaseDate">Release Date</label>
+        <input type="date" name="releaseDate" id="releaseDate" placeholder="Release Date" class="form-control mt-1">
+      </div>
+    </div>
+    <div class="mb-3" id="castBody">
+      <div class="row" id="data0">
+        <div class="col-sm-10">
+          <label>Cast Name</label>
+          <input type="text" name="cast[0]" placeholder="Cast Name" class="form-control mt-1">
+        </div>
+        <div class="col-sm-2 float-right" style="align-items: flex-end;">
+          <input type="button" value="Add Cast" class="btn btn-dark" onclick="addCastTag()">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 float-right">
+        <input type="submit" value="Add" class="btn btn-success">
+      </div>
+    </div>
+  </form>
+</div>
+<script>
+  let i = 1
+
+  const addCastTag = () => {
+    const castBody = document.getElementById('castBody')
+
+    castBody.insertAdjacentHTML('afterend', `<div class="row mb-3" id="data${i}">
+        <div class="col-sm-10">
+          <label>Cast Name</label>
+          <input type="text" name="cast[]" placeholder="Cast Name" class="form-control mt-1">
+        </div>
+        <div class="col-sm-2 float-right" style="align-items: flex-end;">
+          <input type="button" value="Remove Cast" class="btn btn-danger" onclick="removeCastTag('data${i}')">
+        </div>
+      </div>`)
+  }
+
+  const removeCastTag = (elementId) => {
+    const capturedElement = document.getElementById(elementId)
+
+    capturedElement.parentNode.removeChild(capturedElement)
+  }
+</script>
