@@ -4,7 +4,7 @@
   "main": "dist/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/app.ts",
+    "start": "tsc src/app.ts node dist/app.js",
     "lint": "eslint . --ext .ts"
   },
   "author": "Saravana",
