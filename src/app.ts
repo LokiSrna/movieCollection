@@ -158,6 +158,6 @@ app.get("/delete/:id", async (req: Request, res: Response) => {
   res.redirect('/?msg=Success')
 })
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
   return console.log(`Listening at http://localhost:${process.env.PORT}`)
 })
